@@ -27,7 +27,7 @@ pipeline {
     stage('Checkout') {
       steps {
         // Optionally checkout code, if needed
-        // git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-ZeroToHero.git'
+        git branch: 'main', url: 'https://github.com/vishal307-ux/java-project.git'
         echo 'Checkout step completed (no actual checkout in this stage)'
       }
     }
