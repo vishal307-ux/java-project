@@ -80,13 +80,14 @@ pipeline {
     stage('Deploy to Minikube') {
       steps {
         script {
-          // Ensure Minikube context is selected
+          #Ensure Minikube context is selected
           sh 'kubectl config use-context minikube'
 
-          // Apply the updated deployment YAML to Minikube
+          #Apply the updated deployment YAML to Minikube
+          sh 'ls -l java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml'
           sh 'kubectl apply -f java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml --namespace=$K8S_NAMESPACE'
 
-          // Wait for deployment to complete
+          #Wait for deployment to complete
           sh 'kubectl rollout status deployment/my-app --namespace=$K8S_NAMESPACE'
         }
       }
