@@ -27,7 +27,7 @@ pipeline {
     stage('Checkout') {
       steps {
         // Optionally checkout code, if needed
-        git branch: 'main', url: 'https://github.com/vishal307-ux/java-project.git'
+        //git branch: 'main', url: 'https://github.com/vishal307-ux/java-project.git'
         echo 'Checkout step completed (no actual checkout in this stage)'
       }
     }
@@ -64,11 +64,9 @@ pipeline {
           sh '''
             git config user.email "${GIT_EMAIL}"
             git config user.name "${GIT_USER_NAME}"
-            # Give execute permission to the script
-            chmod +x /var/lib/jenkins/workspace/Java-Testing@tmp/durable-2339ba1f/script.sh.copy
-
+            
             # Ensure the deployment YAML file has read and write permissions
-            chmod 644 java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+            chmod 755 java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
             // Replace the image tag in the deployment YAML with the build number
             sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
 
