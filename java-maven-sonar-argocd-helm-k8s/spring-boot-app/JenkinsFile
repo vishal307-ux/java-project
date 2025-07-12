@@ -65,7 +65,7 @@ pipeline {
            
              git config user.email "vishalguptav307@gmail.com"
              git config user.name "vishal307-ux"
-             BUILD_NUMBER = ${BUILD_NUMBER}
+             echo "BUILD_NUMBER: ${BUILD_NUMBER}"
             // Replace the image tag in the deployment YAML with the build number
             sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
 
